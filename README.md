@@ -1,5 +1,10 @@
 # 🎮 Console RPG — Terminal Game on C++17
 
+[![Build & Test](https://github.com/lantomorroww/Console-rpg/actions/workflows/build.yml/badge.svg)](https://github.com/lantomorroww/Console-rpg/actions/workflows/build.yml)
+[![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://isocpp.org/)
+[![CMake](https://img.shields.io/badge/CMake-3.14%2B-green.svg)](https://cmake.org/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://isocpp.org/)
 [![CMake](https://img.shields.io/badge/CMake-3.14%2B-green.svg)](https://cmake.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
