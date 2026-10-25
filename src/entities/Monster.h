@@ -12,7 +12,7 @@ private:
     int mana;
     std::string name;
     int armor;
-    int x, y; // координаты в комнате
+    int x, y; 
 
 protected:
     void setHP(int newHp) { hp = newHp; }
@@ -36,7 +36,6 @@ public:
     virtual void show() const;
 };
 
-// Фабричные функции (inline, чтобы избежать множественного определения)
 enum class MonsterType { ZOMBIE, GHOST, SKELETON };
 
 struct Zombie : public Monster {
