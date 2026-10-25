@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <ctime>
 
-// Реализация классов героев (можно вынести в отдельные файлы, но для краткости оставим здесь)
 struct Assassin : public Hero {
     Assassin() : Hero(10, 8, "Assassin", 7, 0, 0) {}
     int getAttackDamage() const override { return 12; }
