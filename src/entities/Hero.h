@@ -30,7 +30,6 @@ public:
     Hero(int hpMax, int manaMax, const std::string& heroName, int armorMax, int startX, int startY);
     virtual ~Hero() = default;
 
-    // Геттеры
     int getHp() const { return hp; }
     int getMana() const { return mana; }
     int getArmor() const { return armor; }
@@ -39,11 +38,9 @@ public:
     int getY() const { return y; }
     int getTotalDamage() const { return getAttackDamage() + specialDamageBonus; }
 
-    // Сеттеры для внешнего управления
     void setStartPosition(int startX, int startY) { x = startX; y = startY; }
     void resetState() { isDefending = false; specialDamageBonus = 0; }
 
-    // Методы движения и отрисовки
     void move(char direction);
     void draw(std::vector<std::vector<char>>& map) const;
     virtual void show() const;
@@ -52,13 +49,11 @@ public:
     if (hp < 0) hp = 0;
 }
 
-    // Виртуальные боевые методы
     virtual int getAttackDamage() const = 0;
     virtual void defend() { isDefending = true; }
     virtual bool useSpecial() { return false; } // по умолчанию неудача
     void takeDamage(int damage); // учитывает защиту
 
-    // Фабрика действий (для боя)
     std::unique_ptr<Action> getAction(int choice) const;
 };
 
