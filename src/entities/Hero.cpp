@@ -14,8 +14,7 @@ void Hero::move(char direction) {
 }
 
 void Hero::draw(std::vector<std::vector<char>>& map) const {
-    // Без отрисовки хитбокса (для финальной версии)
-    // Просто ставим символ игрока
+
     map[y][x] = 'P';
 }
 
