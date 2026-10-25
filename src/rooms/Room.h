@@ -34,7 +34,6 @@ public:
     Room(const Room&) = delete;
 Room& operator=(const Room&) = delete;
 
-// Разрешаем перемещение (работает с unique_ptr)
 Room(Room&&) = default;
 Room& operator=(Room&&) = default;
 };
