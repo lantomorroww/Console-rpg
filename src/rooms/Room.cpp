@@ -22,7 +22,6 @@ void Room::draw(const Hero& hero) const {
     const int doorRow = rows, doorCol1 = 38, doorCol2 = 39;
     std::vector<std::vector<char>> map(rows + 1, std::vector<char>(cols + 1, ' '));
 
-    // Стены и дверь
     for (int c = 1; c <= cols; ++c) {
         map[1][c] = '#';
         map[rows][c] = '#';
@@ -34,13 +33,12 @@ void Room::draw(const Hero& hero) const {
     map[doorRow][doorCol1] = ' ';
     map[doorRow][doorCol2] = ' ';
 
-    // Сундуки
     if (chest >= 1 && !chestOpened[0]) map[3][3] = 'C';
     if (chest >= 2 && !chestOpened[1]) map[3][cols-2] = 'C';
     // Ловушки
     if (objects >= 1 && !trapTriggered[0]) map[rows-1][doorCol1] = '^';
     if (objects >= 2 && !trapTriggered[1]) map[rows-2][doorCol2] = '^';
-    // Монстры (живые)
+    
     int idx = 0;
     for (auto& m : monsters) {
         if (m->getHp() > 0) {
@@ -51,10 +49,8 @@ void Room::draw(const Hero& hero) const {
         ++idx;
     }
 
-    // Игрок (рисует себя без хитбокса)
     hero.draw(map);
 
-    // Вывод
     for (int r = 1; r <= rows; ++r) {
         for (int c = 1; c <= cols; ++c)
             std::cout << map[r][c];
@@ -114,7 +110,6 @@ void Room::checkTriggers(Hero& hero, bool& battleStarted, std::unique_ptr<Monste
     };
     int hx = hero.getX(), hy = hero.getY();
 
-    // Сундуки
     if (chest >= 1 && !chestOpened[0] && hitboxesOverlap(hx, hy, 3, 3)) {
         chestOpened[0] = true;
         hero.addHP(10);
@@ -126,7 +121,6 @@ void Room::checkTriggers(Hero& hero, bool& battleStarted, std::unique_ptr<Monste
         std::cout << "\n*** Вы открыли сундук! +10 HP ***\n";
     }
 
-    // Ловушки
     if (objects >= 1 && !trapTriggered[0] && hitboxesOverlap(hx, hy, doorCol1, rows-1)) {
         trapTriggered[0] = true;
         hero.addHP(-20);
@@ -138,7 +132,6 @@ void Room::checkTriggers(Hero& hero, bool& battleStarted, std::unique_ptr<Monste
         std::cout << "\n*** Ловушка! -20 HP ***\n";
     }
 
-    // Монстры
     if (!battleStarted) {
         int idx = 0;
         for (auto& m : monsters) {
@@ -175,7 +168,6 @@ void Room::removeDeadMonsters() {
         monsters.end());
 }
 
-// Генерация случайной комнаты
 Room generateRandomRoom() {
     static std::random_device rd;
     static std::mt19937 gen(rd());
