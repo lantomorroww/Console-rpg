@@ -7,7 +7,7 @@ void AttackAction::execute(Hero& hero, Monster& monster, bool& battleEnded) {
     int damage = hero.getTotalDamage();
     monster.takeDamage(damage);
     std::cout << "Вы нанесли " << damage << " урона монстру.\n";
-    hero.resetState(); // сброс бонусов после атаки
+    hero.resetState(); 
 }
 
 void DefendAction::execute(Hero& hero, Monster& monster, bool& battleEnded) {
