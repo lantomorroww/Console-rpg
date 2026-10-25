@@ -5,7 +5,6 @@
 #include "entities/Hero.h"
 #include "rooms/Room.h"
 
-// Объявление функции боя (свободной)
 void startBattle(Hero& hero, Monster& monster);
 
 class Game {
